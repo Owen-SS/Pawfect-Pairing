@@ -16,7 +16,7 @@
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.j_shw.PawfectPairing"
+      "package": "com.wardogs.PawfectPairing"
     },
     "web": {
       "bundler": "metro",
@@ -45,6 +45,7 @@
       "eas": {
         "projectId": "101904b5-c8e9-47ee-9e03-0e02e3b76ec7"
       }
-    }
+    },
+    "owner": "wardogs"
   }
 }
