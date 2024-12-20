@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from "react-native";
-import { Link, useRouter } from 'expo-router';
+import { useRouter } from 'expo-router';
 import { SystemBars } from "react-native-edge-to-edge";
 import React, { useEffect, useState } from "react";
 import Animated, { useAnimatedStyle, withTiming, useSharedValue, useAnimatedGestureHandler, runOnJS } from 'react-native-reanimated';
