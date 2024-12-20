@@ -1,4 +1,4 @@
 class Weight {
-    min: number 
-    max: number
+    public min: number 
+    public max: number
 }

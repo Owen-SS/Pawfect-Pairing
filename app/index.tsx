@@ -1,15 +1,18 @@
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import React from 'react';
+import { SafeAreaView, StyleSheet } from 'react-native';
+import BreedList from '../components/Cards';
 
-import HomeScreen from '../components/HomeScreen'; 
-import ProfileScreen from '../components/ProfileScreen'; 
-
-const Stack = createNativeStackNavigator();
-
-export default function App () {
+export default function App() {
   return (
-    <Stack.Navigator>
-      <Stack.Screen name="Home" component={HomeScreen} />
-      <Stack.Screen name="Profile" component={ProfileScreen} />
-    </Stack.Navigator>
+    <SafeAreaView style={styles.container}>
+      <BreedList />
+    </SafeAreaView>
   );
-};
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#f5f5f5',
+  },
+});

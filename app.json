@@ -10,7 +10,8 @@
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.wardogs.PawfectPairing"
+      "bundleIdentifier": "com.wardogs.PawfectPairing",
+      "icon": "./assets/images/icon.jpg"
     },
     "android": {
       "adaptiveIcon": {
