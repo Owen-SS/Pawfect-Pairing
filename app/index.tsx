@@ -6,43 +6,19 @@ import { Button } from 'react-native';
 async function fetchDog() {
   const response = await fetch('https://dogapi.dog/api/v2/breeds');
   const data = await response.json();
-  let name = data.data[0].attributes.name
-  let description = data.data[0].attributes.description
-  // alert(text);
-  return (
-    <View>
-      <Text>{name}</Text>
-      <Text>{description}</Text>
-    </View>
-  )
+  let dogs = data.data;
+  let name = dogs[0].attributes.name;
+  let description = dogs[0].attributes.description;
+  return { name, description }; // Return an object with name and description
 }
 
-// function Avatar() {
-//   return (
-//     <img
-//       className="avatar"
-//       src="https://i.imgur.com/1bX5QH6.jpg"
-//       alt="Lin Lanying"
-//       width={100}
-//       height={100}
-//     />
-//   );
-// }
-
-export default function Profile() {
-  return (
-    <Avatar />
-  );
-}
 
 
 export default function Page() {
-  const [name, setName] = useState("");
+  const [dogData, setDogData] = useState({ name: "", description: "" }); // State to store both name and description
 
   useEffect(() => { 
-    fetchDog().then(
-      name => setName(name)
-    ); 
+    fetchDog().then(data => setDogData(data)); // Update state with the fetched data
   }, []);
 
   return (
@@ -54,9 +30,8 @@ export default function Page() {
       </View>
 
       <View style={styles.factBox}> 
-        { name }
-        {/* <Text>{name}</Text> 
-        <Text>{description}</Text> */}
+        <Text>{dogData.name}</Text> 
+        <Text>{dogData.description}</Text> 
       </View>
 
       {/* <Button onPress={() => fetchFact()} title="Fetch a fact!" /> */}
