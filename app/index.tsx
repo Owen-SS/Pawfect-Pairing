@@ -1,22 +1,21 @@
 import { StyleSheet, Text, View } from "react-native";
 import { SystemBars } from "react-native-edge-to-edge";
 import React, { useEffect , useState } from "react";
-import { Button } from 'react-native';
 
-async function fetchDog() {
+async function fetchFact() {
   const response = await fetch('https://dogapi.dog/api/v2/facts');
   const data = await response.json();
-  let fact = data.data;
+  let fact = data.data[0].attributes.body;
   return fact
 }
 
 
 
 export default function Page() {
-  const [dogData, setDogData] = useState({ name: "", description: "" }); // State to store both name and description
+  const [fact, setDogData] = useState(""); 
 
   useEffect(() => { 
-    fetchDog().then(data => setDogData(data)); // Update state with the fetched data
+    fetchFact().then(data => setDogData(data)); 
   }, []);
 
   return (
@@ -28,11 +27,8 @@ export default function Page() {
       </View>
 
       <View style={styles.factBox}> 
-        <Text>{dogData.name}</Text> 
-        <Text>{dogData.description}</Text> 
+        <Text>{fact}</Text> 
       </View>
-
-      {/* <Button onPress={() => fetchFact()} title="Fetch a fact!" /> */}
     </View>
   );
 }
