@@ -6,7 +6,6 @@ import Attributes from '../Models/Attributes';
 import Relationship from '../Models/Relationship';
 import Group from '../Models/Group';
 
-
 const BreedList = () => {
   const [breeds, setBreeds] = useState<Breed[]>([]);
 
@@ -78,7 +77,9 @@ const BreedList = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    gap: 10,
+    gap: 12,
+    padding: 20,
+    backgroundColor: '#f4f4f9',
   },
 });
 
