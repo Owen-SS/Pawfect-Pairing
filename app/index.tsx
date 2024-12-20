@@ -3,20 +3,46 @@ import { SystemBars } from "react-native-edge-to-edge";
 import React, { useEffect , useState } from "react";
 import { Button } from 'react-native';
 
-async function fetchFact() {
-  const response = await fetch('https://dogapi.dog/api/v2/facts');
+async function fetchDog() {
+  const response = await fetch('https://dogapi.dog/api/v2/breeds');
   const data = await response.json();
-
-  let text = data.data[0].attributes.body
+  let name = data.data[0].attributes.name
+  let description = data.data[0].attributes.description
   // alert(text);
-  return text
+  return (
+    <View>
+      <Text>{name}</Text>
+      <Text>{description}</Text>
+    </View>
+  )
 }
 
+// function Avatar() {
+//   return (
+//     <img
+//       className="avatar"
+//       src="https://i.imgur.com/1bX5QH6.jpg"
+//       alt="Lin Lanying"
+//       width={100}
+//       height={100}
+//     />
+//   );
+// }
+
+export default function Profile() {
+  return (
+    <Avatar />
+  );
+}
+
+
 export default function Page() {
-  const [fact, setFact] = useState("");
+  const [name, setName] = useState("");
 
   useEffect(() => { 
-    fetchFact().then(fact => setFact(fact)); 
+    fetchDog().then(
+      name => setName(name)
+    ); 
   }, []);
 
   return (
@@ -28,7 +54,9 @@ export default function Page() {
       </View>
 
       <View style={styles.factBox}> 
-        <Text>{fact}</Text> 
+        { name }
+        {/* <Text>{name}</Text> 
+        <Text>{description}</Text> */}
       </View>
 
       {/* <Button onPress={() => fetchFact()} title="Fetch a fact!" /> */}
@@ -58,10 +86,8 @@ const styles = StyleSheet.create({
   },
   factBox: {
     marginTop: 20,
-    borderWidth: 1,
-    borderColor: "#ccc", 
     padding: 15,
     borderRadius: 8, 
-    backgroundColor: "#f9f9f9", 
+    backgroundColor: "whitesmoke", 
   },
 });
