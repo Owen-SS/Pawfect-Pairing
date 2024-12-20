@@ -110,19 +110,17 @@ const styles = StyleSheet.create({
   main: {
     flex: 1,
     justifyContent: "center",
-    alignItems: "center",
     maxWidth: 960,
     marginHorizontal: "auto",
+
   },
   title: {
     fontSize: 64,
     fontWeight: "bold",
-    textAlign: "center",
   },
   subtitle: {
     fontSize: 36,
     color: "#38434D",
-    textAlign: "center",
   },
   factBox: {
     width: '100%',
@@ -130,9 +128,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     backgroundColor: "whitesmoke",
     marginBottom: 30,
-  },
-  factText: {
-    textAlign: 'center'
+    alignItems: "center"
   },
   panView: {
     flex: 1,
