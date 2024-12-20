@@ -16,20 +16,20 @@ async function fetchFact() {
       return data.data[0].attributes.body;
     } else {
       console.error("Invalid data format:", data);
-      return "Could not retrieve a dog fact."; // Provide a fallback message
+      return "Could not retrieve a dog fact.";
     }
   } catch (error) {
     console.error("Error fetching fact:", error);
-    return "Failed to fetch dog fact."; // Provide a fallback message
+    return "Failed to fetch dog fact.";
   }
 }
 
 export default function Page() {
-  const [fact, setFact] = useState("Loading dog fact..."); // Initial loading message
+  const [fact, setFact] = useState("Loading dog fact...");
   const router = useRouter();
 
   useEffect(() => {
-    let isMounted = true; // Add a flag to prevent setting state after unmount
+    let isMounted = true;
 
     fetchFact().then(data => {
       if (isMounted) {
@@ -38,7 +38,7 @@ export default function Page() {
     });
 
     return () => {
-      isMounted = false; // Set flag to false on unmount
+      isMounted = false;
     };
   }, []);
 
@@ -80,18 +80,21 @@ export default function Page() {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <View style={styles.container}>
+
         <SystemBars style="auto" />
+
         <PanGestureHandler onGestureEvent={panGestureEvent}>
           <Animated.View style={[animatedStyles, styles.panView]}> 
+            
             <View style={styles.main}>
               <Text style={styles.title}>Pawfect Pairing</Text>
               <Text style={styles.subtitle}>Find your new best friend</Text>
-              {/* <Link href="/main">View details</Link>  The link does not work reliably when swiping*/}
             </View>
 
             <View style={styles.factBox}>
               <Text>{fact}</Text>
             </View>
+
           </Animated.View>
         </PanGestureHandler>
       </View>
@@ -102,30 +105,38 @@ export default function Page() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
     padding: 24,
   },
   main: {
+    flex: 1,
     justifyContent: "center",
+    alignItems: "center",
     maxWidth: 960,
     marginHorizontal: "auto",
   },
   title: {
     fontSize: 64,
     fontWeight: "bold",
+    textAlign: "center",
   },
   subtitle: {
     fontSize: 36,
     color: "#38434D",
+    textAlign: "center",
   },
   factBox: {
-    marginTop: 20,
+    width: '100%',
     padding: 15,
     borderRadius: 8,
     backgroundColor: "whitesmoke",
+    marginBottom: 30,
   },
-  panView: { 
+  factText: {
+    textAlign: 'center'
+  },
+  panView: {
+    flex: 1,
     width: '100%',
-    alignItems: 'center'
-  }
+    justifyContent: 'space-between',
+  },
 });
