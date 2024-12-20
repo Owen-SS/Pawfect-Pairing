@@ -1,46 +1,21 @@
-import { StyleSheet, Text, View } from "react-native";
-import { Link } from 'expo-router';
-import { SystemBars } from "react-native-edge-to-edge";
-import React, { useEffect , useState } from "react";
+import React from 'react';
+import { SafeAreaView, StyleSheet } from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import BreedList from '../../components/Cards';
 
-
-export default function Page() {
-
+export default function App() {
   return (
-    <View style={styles.container}>
-      <SystemBars style="auto" />
-      <View style={styles.main}>
-        <Text style={styles.title}>Main</Text>
-        <Text style={styles.subtitle}>The second screen</Text>
-      </View>
-    </View>
+    <GestureHandlerRootView style={{ flex: 1 }}> 
+      <SafeAreaView style={styles.container}>
+        <BreedList />
+      </SafeAreaView>
+    </GestureHandlerRootView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
-    padding: 24,
-  },
-  main: {
-    flex: 1,
-    justifyContent: "center",
-    maxWidth: 960,
-    marginHorizontal: "auto",
-  },
-  title: {
-    fontSize: 64,
-    fontWeight: "bold",
-  },
-  subtitle: {
-    fontSize: 36,
-    color: "#38434D",
-  },
-  factBox: {
-    marginTop: 20,
-    padding: 15,
-    borderRadius: 8, 
-    backgroundColor: "whitesmoke", 
+    backgroundColor: '#f5f5f5',
   },
 });
