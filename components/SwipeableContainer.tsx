@@ -47,6 +47,10 @@ export default function SwipeableContainer({ navigateToMain }) {
               <Text style={styles.title}>Pawfect Pairing</Text>
               <Text style={styles.subtitle}>Find your new best friend</Text>
             </View>
+            <View style={styles.arrowContainer}>
+              <Text style={styles.arrow}>←</Text>
+              <Text style={styles.swipeText}>Swipe Left to Begin</Text>
+            </View>
           </Animated.View>
         </PanGestureHandler>
       </View>
@@ -77,5 +81,19 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     justifyContent: 'space-between',
+  },
+  arrowContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  arrow: {
+    fontSize: 30,
+    marginRight: 10,
+    color: '#000',
+  },
+  swipeText: {
+    fontSize: 18,
+    color: '#000',
   },
 });
