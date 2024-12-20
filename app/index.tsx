@@ -6,7 +6,7 @@ import { Button } from 'react-native';
 async function fetchFact() {
   const response = await fetch('https://dogapi.dog/api/v2/facts');
   const data = await response.json();
-  alert('Hello ' + data.data[0].attributes.body);
+  alert(data.data[0].attributes.body);
 }
 
 export default function Page() {
