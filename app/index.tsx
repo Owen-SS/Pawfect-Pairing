@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View } from "react-native";
 import { SystemBars } from "react-native-edge-to-edge";
-import React, { useEffect } from "react"; // Import useEffect
+import React, { useEffect } from "react";
 import { Button } from 'react-native';
 
 async function fetchFact() {
