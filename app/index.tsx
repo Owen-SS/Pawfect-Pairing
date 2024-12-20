@@ -4,12 +4,10 @@ import React, { useEffect , useState } from "react";
 import { Button } from 'react-native';
 
 async function fetchDog() {
-  const response = await fetch('https://dogapi.dog/api/v2/breeds');
+  const response = await fetch('https://dogapi.dog/api/v2/facts');
   const data = await response.json();
-  let dogs = data.data;
-  let name = dogs[0].attributes.name;
-  let description = dogs[0].attributes.description;
-  return { name, description }; // Return an object with name and description
+  let fact = data.data;
+  return fact
 }
 
 
