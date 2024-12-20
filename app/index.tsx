@@ -1,18 +1,22 @@
 import { StyleSheet, Text, View } from "react-native";
 import { SystemBars } from "react-native-edge-to-edge";
-import React, { useEffect } from "react";
+import React, { useEffect , useState } from "react";
 import { Button } from 'react-native';
 
 async function fetchFact() {
   const response = await fetch('https://dogapi.dog/api/v2/facts');
   const data = await response.json();
-  alert(data.data[0].attributes.body);
+
+  let text = data.data[0].attributes.body
+  // alert(text);
+  return text
 }
 
 export default function Page() {
+  const [fact, setFact] = useState("");
 
   useEffect(() => { 
-    fetchFact(); 
+    fetchFact().then(fact => setFact(fact)); 
   }, []);
 
   return (
@@ -22,7 +26,12 @@ export default function Page() {
         <Text style={styles.title}>Pawfect Pairing</Text>
         <Text style={styles.subtitle}>Find your new best friend</Text>
       </View>
-      <Button onPress={() => fetchFact()} title="Fetch a fact!" />
+
+      <View style={styles.factBox}> 
+        <Text>{fact}</Text> 
+      </View>
+
+      {/* <Button onPress={() => fetchFact()} title="Fetch a fact!" /> */}
     </View>
   );
 }
@@ -46,5 +55,13 @@ const styles = StyleSheet.create({
   subtitle: {
     fontSize: 36,
     color: "#38434D",
+  },
+  factBox: {
+    marginTop: 20,
+    borderWidth: 1,
+    borderColor: "#ccc", 
+    padding: 15,
+    borderRadius: 8, 
+    backgroundColor: "#f9f9f9", 
   },
 });
