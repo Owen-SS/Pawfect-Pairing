@@ -6,8 +6,9 @@ import { Button } from 'react-native';
 async function fetchDog() {
   const response = await fetch('https://dogapi.dog/api/v2/breeds');
   const data = await response.json();
-  let name = data.data[0].attributes.name;
-  let description = data.data[0].attributes.description;
+  let dogs = data.data;
+  let name = dogs[0].attributes.name;
+  let description = dogs[0].attributes.description;
   return { name, description }; // Return an object with name and description
 }
 
