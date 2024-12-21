@@ -51,6 +51,7 @@ const styles = StyleSheet.create({
   },
   card: {
     width: screenWidth - 40,
+    maxWidth: 800,
     height: screenHeight - 130,
     backgroundColor: '#ffffff',
     padding: 20,
