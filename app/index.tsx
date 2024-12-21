@@ -14,7 +14,7 @@ export default function Page() {
 
   return (
     <View style={styles.fullScreen}>
-      <SystemBars style="auto" />
+      <SystemBars style="dark" />
       <SwipeableContainer navigateToMain={navigateToMain}>
       </SwipeableContainer>
     </View>
