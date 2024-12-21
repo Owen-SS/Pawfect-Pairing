@@ -5,7 +5,7 @@ import { SystemBars } from "react-native-edge-to-edge";
 
 export default function App() {
   return (
-    <View>
+    <View style={styles.fullScreen}>
       <SystemBars style="auto" />
       <SwipeableCards>
       </SwipeableCards>
@@ -17,5 +17,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#f5f5f5',
+  },
+  fullScreen: {
+    flex: 1,
+    alignItems: "center",
   },
 });
