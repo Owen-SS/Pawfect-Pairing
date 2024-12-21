@@ -15,9 +15,14 @@ export default function SwipeableContainer() {
   const [breeds, setBreeds] = useState<Breed[]>([]);
   const translateX = useSharedValue(0);
   const startX = useRef(0);
+  const translateY = useSharedValue(0);
+  // const startY = useRef(0);
 
   const animatedStyles = useAnimatedStyle(() => ({
-    transform: [{ translateX: translateX.value }],
+    transform: [
+      { translateX: translateX.value },
+      { translateY: translateY.value }
+    ],
   }));
 
   const fetchBreed = async () => {
@@ -76,17 +81,20 @@ export default function SwipeableContainer() {
   };
 
   const panGestureEvent = useAnimatedGestureHandler({
-    onStart: (event, context: { translateX: number }) => {
+    onStart: (event, context: { translateX: number, translateY: number }) => {
       context.translateX = Number(translateX.value);
+      context.translateY = Number(translateY.value); // Add translateY to context
     },
-    onActive: (event, context: { translateX: number }) => {
+    onActive: (event, context: { translateX: number, translateY: number }) => {
       translateX.value = event.translationX + context.translateX;
+      translateY.value = event.translationY + context.translateY; // Update translateY
     },
     onEnd: (event) => {
       if (event.translationX > 100) {
         runOnJS(handleSwipe)(); 
       } else {
         translateX.value = withTiming(0);
+        translateY.value = withTiming(0); // Reset translateY on end
       }
     },
   });
