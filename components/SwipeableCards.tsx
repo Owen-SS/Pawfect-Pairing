@@ -13,6 +13,8 @@ const { height } = Dimensions.get('window');
 export default function SwipeableContainer() {
   const [currentBreedIndex, setCurrentBreedIndex] = useState(0);
   const [breeds, setBreeds] = useState<Breed[]>([]);
+  const [likedArray, setLikedArray] = useState([]);
+  const [dislikedArray, setDislikedArray] = useState([]);
   const translateX = useSharedValue(0);
   const startX = useRef(0);
   const translateY = useSharedValue(0);
@@ -82,10 +84,22 @@ const animatedStyles = useAnimatedStyle(() => { // Animates swipe
     }
   };
 
-  const handleSwipe = () => {
+  const handleSwipe = (direction) => {
+    const currentBreedId = breeds[currentBreedIndex]?.id; // Get current dog ID
+
+    if (direction === 'right' && currentBreedId) {
+      setLikedArray([...likedArray, currentBreedId]);
+    } else if (direction === 'left' && currentBreedId) {
+      setDislikedArray([...dislikedArray, currentBreedId]);
+    }
+
     setCurrentBreedIndex((prevIndex) => prevIndex + 1);
     translateX.value = withTiming(0); 
     translateY.value = withTiming(0); 
+
+    console.log(likedArray)
+    console.log(dislikedArray)
+
     if (currentBreedIndex + 1 >= breeds.length) { // Load next set of breeds in (Will not work on current API)
       fetchBreed(); 
     }
@@ -102,9 +116,9 @@ const animatedStyles = useAnimatedStyle(() => { // Animates swipe
     },
     onEnd: (event) => {
       if (event.translationX > 100) { // Swpie right
-        runOnJS(handleSwipe)(); 
+        runOnJS(handleSwipe)('right'); 
       } else if (event.translationX < 100) { // Swpie left
-        runOnJS(handleSwipe)(); 
+        runOnJS(handleSwipe)('left'); 
       } else {
         translateX.value = withTiming(0);
         translateY.value = withTiming(0);
@@ -121,8 +135,10 @@ const animatedStyles = useAnimatedStyle(() => { // Animates swipe
   const handleTouchEnd = (e) => {
     const endX = e.changedTouches[0].clientX;
     const deltaX = endX - startX.current;
-    if (deltaX > 100) {
-      handleSwipe();
+    if (deltaX > 100) { // Swipe right
+      handleSwipe('right');
+    } if (deltaX < 100) { // Swipe left
+      handleSwipe('left');
     } else {
       translateX.value = withTiming(0);
     }
@@ -130,7 +146,9 @@ const animatedStyles = useAnimatedStyle(() => { // Animates swipe
 
   const handleKeyDown = (e) => {
     if (e.key === 'ArrowLeft') {
-      handleSwipe();
+      handleSwipe('left');
+    }else if (e.key === 'ArrowRight') {
+      handleSwipe('right');
     }
   };
 
