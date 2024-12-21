@@ -86,7 +86,7 @@ const animatedStyles = useAnimatedStyle(() => {
     setCurrentBreedIndex((prevIndex) => prevIndex + 1);
     translateX.value = withTiming(0); 
     translateY.value = withTiming(0); 
-    if (currentBreedIndex + 1 >= breeds.length) {
+    if (currentBreedIndex + 1 >= breeds.length) { // Load next set of breeds in (Will not work on current API)
       fetchBreed(); 
     }
   };
