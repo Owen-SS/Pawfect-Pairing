@@ -1,6 +1,7 @@
 name: Deploy React Native Web to Netlify
 
 on:
+  workflow_dispatch: 
   push:
     branches:
       - main
