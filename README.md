@@ -33,31 +33,6 @@ Please note, the goal for this project was to dedicate only one weekend to see h
 ### Should-haves
 - Once the person has gotten their result if they are happy with it an option should come up like view this breed in the RSPCA or any other dog rescue company. 
 
-## Important Contributing
-
-When contributing to this repository please follow the git flow workflow:
-
-Git Flow is a branching model that provides a structured approach to managing features, releases, and hotfixes in a Git repository. This guide outlines the steps to set up and use Git Flow effectively.
-
-Branch Types:
-
-- **master**: Represents the production-ready state of the project.
-- **develop**: Contains the latest development changes.
-- **feature/***: Used for developing new features.
-- **release/***: Prepares the code for production release.
-- **hotfix/***: Used for applying critical fixes to the production code.
-
-You can look more into this here - [gitflow documentation here](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow)
-
-## How to Contribute
-Do you have an idea for an improvement? Feel free to clone or fork the repository and submit a pull request. Alternatively, you can open an issue and tag it as "enhancement" to share your suggestions.
-
-- Step 1 - Clone or Fork the Project
-- Step 2 - Create a Feature Branch (`git checkout -b feature/your-feature`)
-- Step 3 - Commit your Changes (`git commit -m 'your-feature'`)
-- Step 4 - Push to the Branch (`git push origin feature/your-feature`)
-- Step 5 - Open a Pull Request
-
 ## Progress Update
 
 When you open the app, you'll see a home screen asking you to swipe right. After that, you'll get a deck of cards with details about different dog breeds
