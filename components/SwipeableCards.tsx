@@ -83,18 +83,18 @@ export default function SwipeableContainer() {
   const panGestureEvent = useAnimatedGestureHandler({
     onStart: (event, context: { translateX: number, translateY: number }) => {
       context.translateX = Number(translateX.value);
-      context.translateY = Number(translateY.value); // Add translateY to context
+      context.translateY = Number(translateY.value);
     },
     onActive: (event, context: { translateX: number, translateY: number }) => {
       translateX.value = event.translationX + context.translateX;
-      translateY.value = event.translationY + context.translateY; // Update translateY
+      translateY.value = event.translationY + context.translateY;
     },
     onEnd: (event) => {
       if (event.translationX > 100) {
         runOnJS(handleSwipe)(); 
       } else {
         translateX.value = withTiming(0);
-        translateY.value = withTiming(0); // Reset translateY on end
+        translateY.value = withTiming(0);
       }
     },
   });
