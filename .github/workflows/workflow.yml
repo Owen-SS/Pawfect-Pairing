@@ -1,6 +1,7 @@
 name: Deploy React Native Web to Netlify
 
 on:
+  workflow_dispatch: 
   push:
     branches:
       - main
@@ -10,29 +11,34 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Step 1: Check out the repository
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # Step 2: Setup Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: lts/*
-          cache: 'yarn'
+          cache: 'npm'
 
+      # Step 3: Install dependencies using npm
       - name: Install dependencies
         run: |
-          npm install -g npm@latest
-          npm install -g yarn
           npm install -g expo-cli
-          yarn install
+          npm install
 
+      # Step 4: Build the web version of the app
       - name: Build Expo Web
         run: expo build:web
 
+      # Step 5: Install Netlify CLI
+      - name: Install Netlify CLI
+        run: npm install -g netlify-cli
+
+      # Step 6: Deploy to Netlify
       - name: Deploy to Netlify
-        uses: netlify/actions-cli@v3
-        with:
-          args: deploy --dir=web-build --prod
+        run: netlify deploy --prod --dir=web-build
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
