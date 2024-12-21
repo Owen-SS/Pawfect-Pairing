@@ -127,19 +127,17 @@ export default function SwipeableContainer() {
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <View style={[styles.container, { height }]}>
-        <PanGestureHandler onGestureEvent={panGestureEvent}>
-          <Animated.View
-            style={[animatedStyles, styles.panView]}
-            onTouchStart={Platform.OS === 'web' ? handleTouchStart : undefined}
-            onTouchEnd={Platform.OS === 'web' ? handleTouchEnd : undefined}
-          >
-            {breeds.length > 0 && ( 
-              <Card breed={breeds[currentBreedIndex]} />
-            )}
-          </Animated.View>
-        </PanGestureHandler>
-      </View>
+      <PanGestureHandler onGestureEvent={panGestureEvent}>
+        <Animated.View
+          style={[animatedStyles, styles.panView]}
+          onTouchStart={Platform.OS === 'web' ? handleTouchStart : undefined}
+          onTouchEnd={Platform.OS === 'web' ? handleTouchEnd : undefined}
+        >
+          {breeds.length > 0 && ( 
+            <Card breed={breeds[currentBreedIndex]} />
+          )}
+        </Animated.View>
+      </PanGestureHandler>
     </GestureHandlerRootView>
   );
 }
