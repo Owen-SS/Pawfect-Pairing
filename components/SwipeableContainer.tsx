@@ -16,10 +16,10 @@ export default function SwipeableContainer({ navigateToMain }) {
   }));
 
   const panGestureEvent = useAnimatedGestureHandler({
-    onStart: (_, context) => {
-      context.translateX = translateX.value;
+    onStart: (event, context: { translateX: number }) => {
+      context.translateX = Number(translateX.value);
     },
-    onActive: (event, context) => {
+    onActive: (event, context: { translateX: number }) => {
       translateX.value = event.translationX + context.translateX;
     },
     onEnd: (event) => {
