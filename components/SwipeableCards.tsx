@@ -18,12 +18,22 @@ export default function SwipeableContainer() {
   const translateY = useSharedValue(0);
   // const startY = useRef(0);
 
-  const animatedStyles = useAnimatedStyle(() => ({
-    transform: [
-      { translateX: translateX.value },
-      { translateY: translateY.value }
-    ],
-  }));
+  
+const animatedStyles = useAnimatedStyle(() => {
+  const transform = []; 
+
+  if (translateX.value !== 0) {
+    transform.push({ translateX: translateX.value });
+  }
+
+  if (translateY.value !== 0) {
+    transform.push({ translateY: translateY.value });
+  }
+
+  return {
+    transform, 
+  };
+});
 
   const fetchBreed = async () => {
     try {
