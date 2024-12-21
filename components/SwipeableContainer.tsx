@@ -1,8 +1,9 @@
+import DogFact from '../components/DogFact';
 import React, { useState, useRef, useEffect } from 'react';
 import { View, StyleSheet, Text, Platform, Dimensions } from 'react-native';
 import Animated, { useAnimatedStyle, withTiming, useSharedValue, useAnimatedGestureHandler, runOnJS } from 'react-native-reanimated';
 import { GestureHandlerRootView, PanGestureHandler } from 'react-native-gesture-handler';
-import { SystemBars } from "react-native-edge-to-edge";
+
 
 const { height } = Dimensions.get('window');
 
@@ -60,7 +61,6 @@ export default function SwipeableContainer({ navigateToMain }) {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <View style={[styles.container, { height }]}>
-        <SystemBars style="auto" />
         <PanGestureHandler onGestureEvent={panGestureEvent}>
           <Animated.View
             style={[animatedStyles, styles.panView]}
@@ -75,6 +75,8 @@ export default function SwipeableContainer({ navigateToMain }) {
               <Text style={styles.arrow}>←</Text>
               <Text style={styles.swipeText}>Swipe Left to Begin</Text>
             </View>
+
+            <DogFact />
           </Animated.View>
         </PanGestureHandler>
       </View>
@@ -86,7 +88,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 24,
-    backgroundColor: '#fff',
   },
   main: {
     flex: 1,
