@@ -75,9 +75,6 @@ const styles = StyleSheet.create({
     color: '#333',
     marginBottom: 10,
   },
-  textWrapper: {
-    marginBottom: 10, 
-  },
   textbox: {
     flexDirection: 'row',
     marginBottom: 15, 
