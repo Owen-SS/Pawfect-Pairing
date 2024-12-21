@@ -1,50 +1,72 @@
-# Welcome to your Expo app 👋
+# Welcome to Pawfect Pairing 🐶🐾
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## Repository admin
+- @Owen-SS
+- @J-shw
 
-## Get started
+## Start Time
+- Friday 20th December 2024 - 8am
 
-1. Install dependencies
+## Deadline
+- Sunday 22nd December 2024 - 6pm
 
-   ```bash
-   npm install
-   ```
+## Introduction
 
-2. Start the app
+This purpose of this web app is to pair people with the dog breed which suits them best. There is a very large range of different dog breeds which have different needs. Some breeds require more walking, some are better for work and some are just lap dogs. This app helps you make the best decision not just for you but for the dog you get! 
 
-   ```bash
-    npx expo start
-   ```
+Please note, the goal for this project was to dedicate only one weekend to see how much progress we could make.
 
-In the output, you'll find options to open the app in a
+## Requirements:
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+### Must-haves
+- Dog name
+- Dog image
+- Dog sescription
+- Swiping functionality -
+   - Swipe left - don’t like, not interested
+   - Swipe right - do like, my cup of tea
+   - Swipe up - save, I want to look more into doggo 
+- Burger menu which opens up to show dogs that have been saved and swiped right on
+- After 20 dogs have been passed through interest gives an overall result on what dog suits the person
+- Cross functionally where the person is asked specific questions, maybe like 10/20 once all have been answered via multiple choice it also gives the breed which suits the person
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+### Should-haves
+- Once the person has gotten their result if they are happy with it an option should come up like view this breed in the RSPCA or any other dog rescue company. 
 
-## Get a fresh project
+## Important Contributing
 
-When you're ready, run:
+When contributing to this repository please follow the git flow workflow:
 
-```bash
-npm run reset-project
-```
+Git Flow is a branching model that provides a structured approach to managing features, releases, and hotfixes in a Git repository. This guide outlines the steps to set up and use Git Flow effectively.
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+Branch Types:
 
-## Learn more
+- **master**: Represents the production-ready state of the project.
+- **develop**: Contains the latest development changes.
+- **feature/***: Used for developing new features.
+- **release/***: Prepares the code for production release.
+- **hotfix/***: Used for applying critical fixes to the production code.
 
-To learn more about developing your project with Expo, look at the following resources:
+You can look more into this here - [gitflow documentation here](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow)
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## How to Contribute
+Do you have an idea for an improvement? Feel free to clone or fork the repository and submit a pull request. Alternatively, you can open an issue and tag it as "enhancement" to share your suggestions.
 
-## Join the community
+- Step 1 - Clone or Fork the Project
+- Step 2 - Create a Feature Branch (`git checkout -b feature/your-feature`)
+- Step 3 - Commit your Changes (`git commit -m 'your-feature'`)
+- Step 4 - Push to the Branch (`git push origin feature/your-feature`)
+- Step 5 - Open a Pull Request
 
-Join our community of developers creating universal apps.
+## Progress Update
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+When you open the app, you'll see a home screen asking you to swipe right. After that, you'll get a deck of cards with details about different dog breeds
+
+![Simulator Screenshot - iPhone 15 Pro - 2024-12-20 at 23 56 23](https://github.com/user-attachments/assets/483926d1-f664-4928-bf94-a8451b6ef7d1)
+
+![Simulator Screenshot - iPhone 15 Pro - 2024-12-20 at 23 15 33](https://github.com/user-attachments/assets/c3f42d61-735c-45a1-af43-774200619c10)
+
+![Simulator Screenshot - iPhone 15 Pro - 2024-12-20 at 23 22 30](https://github.com/user-attachments/assets/ddb3dc06-0510-4dbc-afab-683d954c7a8d)
+
+
+
