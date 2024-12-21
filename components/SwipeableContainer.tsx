@@ -1,48 +1,72 @@
-import React from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import React, { useState, useRef, useEffect } from 'react';
+import { View, StyleSheet, Text, Platform, Dimensions } from 'react-native';
 import Animated, { useAnimatedStyle, withTiming, useSharedValue, useAnimatedGestureHandler, runOnJS } from 'react-native-reanimated';
-import { GestureHandlerRootView, PanGestureHandler, PanGestureHandlerGestureEvent } from 'react-native-gesture-handler';
+import { GestureHandlerRootView, PanGestureHandler } from 'react-native-gesture-handler';
 import { SystemBars } from "react-native-edge-to-edge";
+
+const { height } = Dimensions.get('window');
 
 export default function SwipeableContainer({ navigateToMain }) {
   const translateX = useSharedValue(0);
-  const translateY = useSharedValue(0);
+  const startX = useRef(0);
 
-  const animatedStyles = useAnimatedStyle(() => {
-    return {
-      transform: [
-        { translateX: translateX.value },
-        { translateY: translateY.value },
-      ],
-    };
-  });
+  const animatedStyles = useAnimatedStyle(() => ({
+    transform: [{ translateX: translateX.value }],
+  }));
 
-  const panGestureEvent = useAnimatedGestureHandler<PanGestureHandlerGestureEvent>({
-    onStart: (event, context) => {
+  const panGestureEvent = useAnimatedGestureHandler({
+    onStart: (_, context) => {
       context.translateX = translateX.value;
-      context.translateY = translateY.value;
     },
     onActive: (event, context) => {
       translateX.value = event.translationX + context.translateX;
-      translateY.value = event.translationY + context.translateY;
     },
     onEnd: (event) => {
-      const shouldNavigate = event.translationX > 100;
-      if (shouldNavigate) {
+      if (event.translationX > 100) {
         runOnJS(navigateToMain)();
       } else {
         translateX.value = withTiming(0);
-        translateY.value = withTiming(0);
       }
-    }
+    },
   });
+
+  const handleTouchStart = (e) => {
+    startX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e) => {
+    const endX = e.changedTouches[0].clientX;
+    const deltaX = endX - startX.current;
+    if (deltaX > 100) {
+      navigateToMain();
+    } else {
+      translateX.value = withTiming(0);
+    }
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'ArrowLeft') {
+      navigateToMain();
+    }
+  };
+
+  useEffect(() => {
+    if (Platform.OS === 'web') {
+      window.addEventListener('keydown', handleKeyDown);
+      return () => window.removeEventListener('keydown', handleKeyDown);
+    }
+  }, []);
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <View style={styles.container}>
+      <View style={[styles.container, { height }]}>
         <SystemBars style="auto" />
         <PanGestureHandler onGestureEvent={panGestureEvent}>
-          <Animated.View style={[animatedStyles, styles.panView]}>
+          <Animated.View
+            style={[animatedStyles, styles.panView]}
+            onTouchStart={Platform.OS === 'web' ? handleTouchStart : undefined}
+            onTouchEnd={Platform.OS === 'web' ? handleTouchEnd : undefined}
+          >
             <View style={styles.main}>
               <Text style={styles.title}>Pawfect Pairing</Text>
               <Text style={styles.subtitle}>Find your new best friend</Text>
@@ -62,7 +86,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 24,
-    backgroundColor:'#fff'
+    backgroundColor: '#fff',
   },
   main: {
     flex: 1,
