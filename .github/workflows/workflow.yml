@@ -30,7 +30,7 @@ jobs:
 
       # Step 4: Build the web version of the app
       - name: Build Expo Web
-        run: expo build:web
+        run: npx expo start --web
 
       # Step 5: Install Netlify CLI
       - name: Install Netlify CLI
