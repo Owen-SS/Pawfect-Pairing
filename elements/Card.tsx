@@ -16,29 +16,29 @@ const Card = ({ breed }) => {
         <Text style={styles.name}>{breed.attributes.name}</Text>
         <View style={styles.textbox}>
           <View style={styles.leftColumn}>
-              <View style={styles.infoText}>
+              <View style={styles.infoBox}>
                 <Text style={styles.bold}>Life Expectancy:</Text>
-                <Text>{breed.attributes.life.min} - {breed.attributes.life.max} years</Text>
+                <Text style={styles.infoText}>{breed.attributes.life.min} - {breed.attributes.life.max} years</Text>
               </View>
-              <View style={styles.infoText}>
+              <View style={styles.infoBox}>
                 <Text style={styles.bold}>Hypoallergenic:</Text>
-                <Text>{breed.attributes.hypoallergenic ? 'Yes' : 'No'}</Text>
+                <Text style={styles.infoText}>{breed.attributes.hypoallergenic ? 'Yes' : 'No'}</Text>
               </View>
           </View>
 
           <View style={styles.rightColumn}>
-              <View style={styles.infoText}>
+              <View style={styles.infoBox}>
                 <Text style={styles.bold}>Male Weight:</Text> 
-                <Text>{breed.attributes.male_weight.min} - {breed.attributes.male_weight.max} kg</Text>
+                <Text style={styles.infoText}>{breed.attributes.male_weight.min} - {breed.attributes.male_weight.max} kg</Text>
               </View>
-              <View style={styles.infoText}>
+              <View style={styles.infoBox}>
                 <Text style={styles.bold}>Female Weight:</Text>
-                <Text>{breed.attributes.female_weight.min} - {breed.attributes.female_weight.max} kg </Text> 
+                <Text style={styles.infoText}>{breed.attributes.female_weight.min} - {breed.attributes.female_weight.max} kg </Text> 
               </View>
           </View>
         </View>
 
-        <Text style={styles.description}>{breed.attributes.description}</Text>
+        {/* <Text style={styles.description}>{breed.attributes.description}</Text> */}
       </View>
     </View>
   );
@@ -56,22 +56,21 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
     padding: 20,
     borderRadius: 12,
-    elevation: 5,
+    elevation: 5, 
     shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
-    shadowRadius: 6,
+    shadowRadius: 10,
+    // boxShadow: '0 10 20px rgba(0, 0, 0, 0.2)', 
     gap: 12,
   },
   image: {
     width: '100%',
-    height: 200,
+    height: '60%',
     borderRadius: 10,
-    marginBottom: 15,
-    borderWidth: 2,
-    borderColor: '#ddd',
   },
   name: {
-    fontSize: 24,
+    fontSize: 30,
     fontWeight: 'bold',
     color: '#333',
     marginBottom: 10,
@@ -79,6 +78,7 @@ const styles = StyleSheet.create({
   textbox: {
     flexDirection: 'row',
     marginBottom: 15, 
+    alignItems: 'center',
   },
   leftColumn: {
     flex: 1,
@@ -87,9 +87,14 @@ const styles = StyleSheet.create({
   rightColumn: {
     flex: 1,
   },
-  infoText: {
+  infoBox: {
     fontSize: 16,
-    color: '#555',
+    color: '#ffffff',
+    flexDirection: 'column',
+  },
+  infoText: {
+    fontSize: 25,
+    color: 'black',
     flexDirection: 'column',
   },
   bold: {
