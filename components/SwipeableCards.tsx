@@ -68,7 +68,6 @@ export default function SwipeableContainer() {
   };
 
   const handleSwipe = () => {
-    console.warn('Swipe detected!')
     setCurrentBreedIndex((prevIndex) => prevIndex + 1);
     translateX.value = withTiming(0); 
     if (currentBreedIndex + 1 >= breeds.length) {
