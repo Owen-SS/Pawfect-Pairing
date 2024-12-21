@@ -29,7 +29,7 @@ jobs:
       - name: Export Web Build
         run: |
           npm install -g expo-cli
-          expo export:web
+          npx expo export -p web
 
       # Step 5: Install Netlify CLI
       - name: Install Netlify CLI
