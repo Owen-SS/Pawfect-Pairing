@@ -19,7 +19,7 @@ export default function SwipeableContainer() {
   // const startY = useRef(0);
 
   
-const animatedStyles = useAnimatedStyle(() => {
+const animatedStyles = useAnimatedStyle(() => { // Animates swipe
   const transform = []; 
 
   if (translateX.value !== 0) {
@@ -101,7 +101,9 @@ const animatedStyles = useAnimatedStyle(() => {
       translateY.value = event.translationY + context.translateY;
     },
     onEnd: (event) => {
-      if (event.translationX > 100) {
+      if (event.translationX > 100) { // Swpie right
+        runOnJS(handleSwipe)(); 
+      } else if (event.translationX < 100) { // Swpie left
         runOnJS(handleSwipe)(); 
       } else {
         translateX.value = withTiming(0);
