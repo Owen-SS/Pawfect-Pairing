@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, FlatList, StyleSheet, SafeAreaView } from 'react-native';
+import { FlatList, StyleSheet, SafeAreaView } from 'react-native';
 import Card from '../elements/Card';
 import Breed from '../Models/Breed';
 import Attributes from '../Models/Attributes';
