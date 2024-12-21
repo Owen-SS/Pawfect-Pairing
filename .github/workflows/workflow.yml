@@ -1,7 +1,6 @@
 name: Deploy React Native Web to Netlify
 
 on:
-  workflow_dispatch: 
   push:
     branches:
       - main
@@ -22,15 +21,15 @@ jobs:
           node-version: lts/*
           cache: 'npm'
 
-      # Step 3: Install dependencies using npm
+      # Step 3: Install dependencies
       - name: Install dependencies
+        run: npm install
+
+      # Step 4: Export web build
+      - name: Export Web Build
         run: |
           npm install -g expo-cli
-          npm install
-
-      # Step 4: Build the web version of the app
-      - name: Build Expo Web
-        run: expo build:web
+          expo export:web
 
       # Step 5: Install Netlify CLI
       - name: Install Netlify CLI
