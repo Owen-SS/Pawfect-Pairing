@@ -77,15 +77,18 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   textbox: {
+    flex: 1,
     flexDirection: 'row',
     gap: 10,
   },
   leftColumn: {
     flex: 1,
+    justifyContent: "space-around",
     alignItems: 'center',
   },
   rightColumn: {
     flex: 1,
+    justifyContent: "space-around",
     alignItems: 'center',
   },
   infoBox: {
