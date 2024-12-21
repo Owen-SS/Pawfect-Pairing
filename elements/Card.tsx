@@ -17,22 +17,22 @@ const Card = ({ breed }) => {
         <View style={styles.textbox}>
           <View style={styles.leftColumn}>
               <View style={styles.infoBox}>
-                <Text style={styles.bold}>Life Expectancy:</Text>
+                <Text style={styles.infoTitle}>Life Expectancy</Text>
                 <Text style={styles.infoText}>{breed.attributes.life.min} - {breed.attributes.life.max} years</Text>
               </View>
               <View style={styles.infoBox}>
-                <Text style={styles.bold}>Hypoallergenic:</Text>
+                <Text style={styles.infoTitle}>Hypoallergenic</Text>
                 <Text style={styles.infoText}>{breed.attributes.hypoallergenic ? 'Yes' : 'No'}</Text>
               </View>
           </View>
 
           <View style={styles.rightColumn}>
               <View style={styles.infoBox}>
-                <Text style={styles.bold}>Male Weight:</Text> 
+                <Text style={styles.infoTitle}>Male Weight</Text> 
                 <Text style={styles.infoText}>{breed.attributes.male_weight.min} - {breed.attributes.male_weight.max} kg</Text>
               </View>
               <View style={styles.infoBox}>
-                <Text style={styles.bold}>Female Weight:</Text>
+                <Text style={styles.infoTitle}>Female Weight</Text>
                 <Text style={styles.infoText}>{breed.attributes.female_weight.min} - {breed.attributes.female_weight.max} kg </Text> 
               </View>
           </View>
@@ -74,30 +74,33 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#333',
     marginBottom: 10,
+    textAlign: "center",
   },
   textbox: {
     flexDirection: 'row',
-    marginBottom: 15, 
-    alignItems: 'center',
+    gap: 10,
   },
   leftColumn: {
     flex: 1,
-    marginRight: 10,
+    alignItems: 'center',
   },
   rightColumn: {
     flex: 1,
+    alignItems: 'center',
   },
   infoBox: {
+    width: "100%",
     fontSize: 16,
     color: '#ffffff',
-    flexDirection: 'column',
   },
   infoText: {
     fontSize: 25,
     color: 'black',
     flexDirection: 'column',
+    textAlign: "center",
   },
-  bold: {
+  infoTitle: {
+    textAlign: "center",
     fontWeight: 'bold',
     color: '#333',
   },
