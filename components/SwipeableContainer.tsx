@@ -73,7 +73,7 @@ export default function SwipeableContainer({ navigateToMain }) {
             </View>
             <View style={styles.arrowContainer}>
               <Text style={styles.arrow}>←</Text>
-              <Text style={styles.swipeText}>Swipe Left to Begin</Text>
+              <Text style={styles.swipeText}>Swipe Right to Begin</Text>
             </View>
 
             <DogFact />
