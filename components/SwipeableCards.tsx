@@ -67,6 +67,15 @@ export default function SwipeableContainer() {
     }
   };
 
+  const handleSwipe = () => {
+    console.warn('Swipe detected!')
+    setCurrentBreedIndex((prevIndex) => prevIndex + 1);
+    translateX.value = withTiming(0); 
+    if (currentBreedIndex + 1 >= breeds.length) {
+      fetchBreed(); 
+    }
+  };
+
   const panGestureEvent = useAnimatedGestureHandler({
     onStart: (event, context: { translateX: number }) => {
       context.translateX = Number(translateX.value);
@@ -83,13 +92,7 @@ export default function SwipeableContainer() {
     },
   });
 
-  const handleSwipe = () => {
-    setCurrentBreedIndex((prevIndex) => prevIndex + 1);
-    translateX.value = withTiming(0); 
-    if (currentBreedIndex + 1 >= breeds.length) {
-      fetchBreed(); 
-    }
-  };
+
 
   const handleTouchStart = (e) => {
     startX.current = e.touches[0].clientX;
