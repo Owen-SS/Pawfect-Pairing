@@ -25,15 +25,15 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      # Step 4: Export web build
+      # Step 4: Export Web Build
       - name: Export Web Build
         run: |
           npm install -g expo-cli
           npx expo export -p web
 
-      # Step 5: Verify Web Build Directory
-      - name: Verify Web Build Directory
-        run: ls -la web-build
+      # Step 5: Verify Export Directory
+      - name: Verify Export Directory
+        run: ls -la dist
 
       # Step 6: Install Netlify CLI
       - name: Install Netlify CLI
@@ -41,14 +41,7 @@ jobs:
 
       # Step 7: Deploy to Netlify
       - name: Deploy to Netlify
-        run: netlify deploy --prod --dir=web-build
+        run: netlify deploy --prod --dir=dist
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-
-      # Optional: Fallback to expo build:web if export fails
-      - name: Fallback Web Build
-        if: failure()
-        run: |
-          expo build:web
-          ls -la web-build
