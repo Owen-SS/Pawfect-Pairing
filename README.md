@@ -14,7 +14,7 @@
 
 This purpose of this web app is to pair people with the dog breed which suits them best. There is a very large range of different dog breeds which have different needs. Some breeds require more walking, some are better for work and some are just lap dogs. This app helps you make the best decision not just for you but for the dog you get! 
 
-Please note, the goal for this project was to dedicate only one weekend to see how much progress we could make.
+Please note, the goal for this project was to dedicate only one weekend to see how much progress we could make. - This is our first time using React Native, it is a very new technology to us.
 
 ## Requirements:
 
