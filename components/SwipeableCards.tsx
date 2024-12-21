@@ -75,6 +75,7 @@ export default function SwipeableContainer() {
   const handleSwipe = () => {
     setCurrentBreedIndex((prevIndex) => prevIndex + 1);
     translateX.value = withTiming(0); 
+    translateY.value = withTiming(0); 
     if (currentBreedIndex + 1 >= breeds.length) {
       fetchBreed(); 
     }
